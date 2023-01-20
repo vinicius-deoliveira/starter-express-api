@@ -10,8 +10,15 @@ const PORT = 3000;
 app.all('/', (req, res) => {
   // console.log(req.body) // Call your action on the request here
   axios.get('https://api.callmebot.com/whatsapp.php?phone=5519988889909&text=is+a+test&apikey=5310882')
+  .catch(function (error) {
+    if (error.response) {
+      console.log(error.response.data);
+      console.log(error.response.status);
+      console.log(error.response.headers);
+    }
+  });
   console.log('Axios Pass');
-  res.status(200).end() // Responding is important
+  res.status(200).end(); // Responding is important
   // .then(res => {
   //   console.log('Status Code:', res.status);
   // })
